@@ -34,7 +34,7 @@ function Footer(props) {
 				<h5 className="footer__header">留意我們其他動態</h5>
 				<div className="flex-center">
 					{socialIcons.map(({ type, onClick }) => (
-						<div onClick={onClick}>
+						<div onClick={onClick} key={type}>
 							<Icon className="footer__icon" type={type} />
 						</div>
 					))}

@@ -3,14 +3,14 @@ import React from 'react';
 const GOOGLE_MAP_STREET_PREFIX =
 	'https://maps.googleapis.com/maps/api/streetview';
 
-const generateGoogleStreetImageUrl = ({ lat, int, size, key }) =>
-	`${GOOGLE_MAP_STREET_PREFIX}?location=${lat},${int}&size=${size}x${size}&key=${key}`;
+const generateGoogleStreetImageUrl = ({ lat, lng, size, apiKey }) =>
+	`${GOOGLE_MAP_STREET_PREFIX}?location=${lat},${lng}&size=${size}x${size}&key=${apiKey}`;
 
-function GoogleStreetImage({ lat, int, size, key, ...props }) {
+function GoogleStreetImage({ lat, lng, size, apiKey, ...props }) {
 	return (
 		<img
 			{...props}
-			src={generateGoogleStreetImageUrl({ lat, int, size, key })}
+			src={generateGoogleStreetImageUrl({ lat, lng, size, apiKey })}
 		/>
 	);
 }

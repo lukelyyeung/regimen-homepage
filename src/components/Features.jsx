@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Icon } from 'antd';
+import classNames from 'classnames';
 
 import RowContainer from './common/RowContainer';
 import ItemBox from './common/ItemBox';
@@ -34,16 +35,16 @@ const featureList = [
 ];
 
 function Features({ chidren, className, ...props }) {
-	const classSets = `features ${className}`;
+	const classSets = classNames('features', 'section', className);
 	return (
 		<div className={classSets} {...props}>
-			<h2>設計理念</h2>
+			<h2 className="section__header">設計理念</h2>
 			<RowContainer style={{ alignItems: 'stretch', flexWrap: 'wrap' }}>
-				{featureList.map(({ icon, header, content }) => (
-					<Col className="gutter-row" {...{ xs: 24, sm: 12, md: 6, lg: 6 }}>
+				{featureList.map(({ icon, header, content }, index) => (
+					<Col key={index} className="gutter-row" {...{ xs: 24, sm: 12, md: 6, lg: 6 }}>
 						<ItemBox cover={icon} bordered={false}>
-							<h3>{header}</h3>
-							<p>{content}</p>
+							<h3 className="section__subheader">{header}</h3>
+							<p className="section__paragraph">{content}</p>
 						</ItemBox>
 					</Col>
 				))}

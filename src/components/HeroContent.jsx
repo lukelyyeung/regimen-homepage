@@ -12,16 +12,16 @@ function HeroContent({ ...props }) {
 					className="gutter-row flex-center"
 					{...{ xs: 24, sm: 24, md: 12, lg: 12 }}
 				>
-					<div className="hero-content__main">
+					<div className="hero-content__main animated fadeInUp">
 						<h1 className="hero-content__header">「 藥莊 」</h1>
-						<p className="hero-content__subcontent">
+						<p className="hero-content__subcontent animated animate-delay-0.5 fadeInUp">
 							藥莊採用註冊中醫師為病人處方的中藥藥渣，製成最適合患者使用的個人護理用品，
 							配合內服外用，讓患者得到更全面、持續的治理。亦可以減少耗用新鮮的藥材，
 							和開採及運輸的碳排放。我們會使用食物殘渣機處理藥渣，經渠送到污水處理設施，
 							減少將有機廢物棄置到堆填區，利用現有設施轉廢為能。
 						</p>
 							<Button
-								className="hero-content__button"
+								className="hero-content__button animated animate-delay-1 fadeInUp"
 								ghost
 							>
 								<AnchorLink offset='100' href='#project-introduction'>更多資料</AnchorLink>

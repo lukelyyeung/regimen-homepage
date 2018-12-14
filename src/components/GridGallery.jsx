@@ -18,6 +18,7 @@ const ImageOverlay = ({ children }) => <div {...overlayProps}>{children}</div>;
 function GridGallery({ images, id, ...props }) {
 	return (
 		<div className="section" id={id}>
+			<h2 className="section__header">活動紀錄</h2>
 			<StackGrid
 				monitorImagesLoaded
 				columnWidth="33%"
