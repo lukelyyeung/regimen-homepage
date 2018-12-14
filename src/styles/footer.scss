@@ -1,0 +1,27 @@
+.footer {
+	padding: 4rem;
+	background: white;
+
+	.footer__logo {
+		width: 140px;
+		height: auto;
+		margin-bottom: 2rem;
+	}
+
+	.footer__icon {
+		font-size: 3rem;
+		margin: 1rem;
+		transition: all 150ms ease-in;
+
+		&:hover {
+			color: #1890ff;
+			transform: scale(1.2) translateY(-10%);
+		}
+	}
+
+	.footer__header {
+		margin-bottom: 2rem;
+		font-size: 1.25rem;
+		font-weight: bold;
+	}
+}

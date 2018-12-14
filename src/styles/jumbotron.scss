@@ -1,0 +1,40 @@
+$jumbotron-height: 100vh;
+
+.jumbotron {
+	position: relative;
+	height: $jumbotron-height;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	&__overlay {
+		position: absolute;
+		display: flex;
+		width: 100%;
+		height: $jumbotron-height;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		content: '';
+		background-color: #000;
+		opacity: 0.4;
+	}
+
+	&__inner {
+		position: absolute;
+		display: flex;
+		width: 100%;
+		height: $jumbotron-height;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		content: '';
+		color: white;
+	}
+}

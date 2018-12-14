@@ -1,0 +1,54 @@
+.topbar {
+  z-index: 50;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  min-height: 4rem;
+  display: flex;
+  align-items: stretch;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 2rem 4rem;
+
+  .ant-menu-item {
+    font-weight: 700;
+    display: flex;
+		align-items: center;
+		transition: all 200ms ease-in;
+
+		a, .anticon {
+			color: white;
+		}
+
+    &-active, &-selected {
+			color: #000 !important;
+			a, .anticon {
+				color: #000 !important;
+			}
+		}
+
+		&-active {
+			border-bottom: 2px solid #000 !important;
+		}
+  }
+
+  &__logo {
+    margin-right: auto;
+    transition: transform 100ms ease-in;
+
+    img {
+      width: 3rem;
+      height: auto;
+      margin: 0.5rem 0;
+    }
+
+    &:hover, &:focus {
+			transform: scale(1.1);
+		}
+
+		&.ant-menu-item.ant-menu-item-selected, &.ant-menu-item.ant-menu-item-active  {
+			border-bottom: none!important;
+		}
+  }
+}
