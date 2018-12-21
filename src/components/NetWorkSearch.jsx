@@ -1,11 +1,20 @@
-import React, { Component, Fragment } from 'react';
-import { Form, Row, Col, Input, Button, TreeSelect, Select } from 'antd';
+import React, { Component } from 'react';
+import {
+  Form,
+  Row,
+  Col,
+  Input,
+  Button,
+  TreeSelect,
+  Select,
+  message,
+} from 'antd';
+import InViewMonitor from 'react-inview-monitor';
 import { Marker, InfoWindow } from 'google-maps-react';
 import _flatten from 'lodash/flatten';
 import _get from 'lodash/get';
 
-import RowContainer from './common/RowContainer';
-import GoogleStreetImage from './common/GoolgeStreetImage';
+// import GoogleStreetImage from './common/GoolgeStreetImage';
 import Map from './Map';
 import regions from '../constants/hongKongRegion';
 import specialties from '../constants/specialty';
@@ -14,7 +23,7 @@ import PARTNER_LIST from '../constants/partnerList';
 const FormItem = Form.Item;
 
 const SHOW_PARENT = TreeSelect.SHOW_PARENT;
-const GOOGLE_MAP_API_KEY = process.env.GATSBY_GOOGLE_MAP_API_KEY;
+// const GOOGLE_MAP_API_KEY = process.env.GATSBY_GOOGLE_MAP_API_KEY;
 class NetWorkSearch extends Component {
   state = {
     partners: PARTNER_LIST,
@@ -37,7 +46,10 @@ class NetWorkSearch extends Component {
 
       // check region
       const flattenedRegions = _flatten(selectedRegions);
-      if (!flattenedRegions.find(selectedRegion => selectedRegion === region)) {
+      if (
+        flattenedRegions.length > 0 &&
+        !flattenedRegions.find(selectedRegion => selectedRegion === region)
+      ) {
         return false;
       }
 
@@ -56,7 +68,10 @@ class NetWorkSearch extends Component {
   getFields() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Fragment>
+      <InViewMonitor
+        classNameNotInView="vis-hidden"
+        classNameInView={`animated fadeInDown`}
+      >
         <Col {...{ xs: 24, sm: 24, md: 24, lg: 24 }} key="region">
           <FormItem label="地區">
             {getFieldDecorator('regions', { rules: [{ required: false }] })(
@@ -90,16 +105,30 @@ class NetWorkSearch extends Component {
             )}
           </FormItem>
         </Col>
-      </Fragment>
+      </InViewMonitor>
     );
   }
 
   handleSearch = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      console.log('Received values of form: ', values);
       const filteredPartners = this.filterPartnerList(values);
-      this.setState({ ...this.state, partners: filteredPartners });
+      message
+        .loading('正在搜尋中醫合作夥伴...', 1.25)
+        .then(() => {
+          if (filteredPartners.length > 0) {
+            message.success(
+              `搜尋成功, 有${filteredPartners.length}位匹配的中醫合作夥伴`,
+              2.5
+            );
+            return;
+          }
+
+          message.warning('對不起，沒有匹配的中醫合作夥伴，請再嘗試', 2.5);
+        })
+        .then(() =>
+          this.setState({ ...this.state, partners: filteredPartners })
+        );
     });
   };
 
@@ -150,7 +179,7 @@ class NetWorkSearch extends Component {
     //   },
     // };
     return (
-      <Col {...{ xs: 24, sm: 24, md: 12, lg: 12 }}>
+      <Col {...{ xs: 24, sm: 24, md: 24, lg: 12 }}>
         <Map mapTypeControl={false} fullscreenControl={false}>
           {partners.map(partner => {
             const {
@@ -195,11 +224,14 @@ class NetWorkSearch extends Component {
 
   renderForm() {
     return (
-      <Col {...{ xs: 24, sm: 24, md: 12, lg: 12 }} className="network__form">
+      <Col {...{ xs: 24, sm: 24, md: 24, lg: 12 }} className="network__form">
+        <p className="section__paragraph">
+          我們正致力尋找合作夥伴，若你想享用我們的服務，可在此搜尋你家附近的「藥莊」合作夥伴。
+        </p>
         <Form onSubmit={this.handleSearch}>
           <Row gutter={24}>{this.getFields()}</Row>
           <Row>
-            <Col span={24} style={{ textAlign: 'right' }}>
+            <Col span={24} style={{ textAlign: 'right', marginBottom: '1rem' }}>
               <Button type="primary" htmlType="submit">
                 搜尋
               </Button>
@@ -219,10 +251,10 @@ class NetWorkSearch extends Component {
     return (
       <div className={classSets} id={id}>
         <h2 className="section__header">中醫網絡</h2>
-        <RowContainer gutter={16}>
+        <Row gutter={16}>
           {this.renderForm()}
           {this.renderMap()}
-        </RowContainer>
+        </Row>
       </div>
     );
   }

@@ -43,7 +43,7 @@ function Home() {
 				<Modal
 					title="問卷調查"
 					className="flex-center"
-					style={{ alignItems: 'flex-end' }}
+					style={{ alignItems: 'flex-end', top: 20, maxHeight: '90vh', overFlow: 'unset' }}
 					cancelText="取消"
 					skipConfirm
 					outputRender={({ onClick }) => (
