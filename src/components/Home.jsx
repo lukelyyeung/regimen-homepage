@@ -1,5 +1,4 @@
 import React from 'react';
-import { Layout, Button } from 'antd';
 
 import Jumbotron from './Jumbotron';
 import HeroContent from './HeroContent';

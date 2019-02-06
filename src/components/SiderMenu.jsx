@@ -221,7 +221,7 @@ export default class SiderMenu extends PureComponent {
           collapsible
           collapsed={collapsed}
           breakpoint="lg"
-          width={280}
+          width={220}
         >
           {logo && (
             <div key="logo">

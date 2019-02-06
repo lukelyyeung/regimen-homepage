@@ -1,5 +1,4 @@
 $jumbotron-height: 100vh;
-$jumbotron-mobile-height: 70vh;
 
 .jumbotron {
   position: relative;
@@ -42,15 +41,5 @@ $jumbotron-mobile-height: 70vh;
     left: 0;
     content: '';
     color: white;
-  }
-}
-
-@media screen and (max-width: $screen-xs) {
-  .jumbotron {
-    height: $jumbotron-mobile-height;
-
-    &__overlay, &__inner {
-      height: $jumbotron-mobile-height;
-    }
   }
 }

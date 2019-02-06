@@ -27,5 +27,8 @@
     "react-inview-monitor": "2.2.0",
     "react-messenger-customer-chat": "0.7.2",
     "react-stack-grid": "0.7.1"
+  },
+  "devDependencies": {
+    "gatsby-plugin-polyfill-io": "1.0.5"
   }
 }
