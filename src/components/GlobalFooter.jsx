@@ -1,7 +1,6 @@
 import React from 'react';
-import { Layout, Icon } from 'antd';
+import { Icon } from 'antd';
 
-import logoUrl from './images/logo.png';
 import openNewTab from '../utils/openNewTab';
 
 const socialIcons = [
@@ -25,7 +24,6 @@ const socialIcons = [
   },
 ];
 
-const onClickCreator = href => () => openNewTab(href);
 function GlobalFooter(props) {
   return (
     <div className="flex-center flex-center--column">

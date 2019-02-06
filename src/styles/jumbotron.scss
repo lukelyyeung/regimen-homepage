@@ -12,7 +12,7 @@ $jumbotron-height: 100vh;
   background-repeat: no-repeat;
 
   @media screen and (max-width: $screen-xs) {
-    background-position: top;
+    background-position: bottom;
     background-size: 575px 600px;
   }
 

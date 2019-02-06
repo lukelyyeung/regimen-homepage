@@ -38,22 +38,17 @@ const featureList = [
   },
 ];
 
+const customRowStyle = { marginLeft: 0, marginRight: 0, alignItems: 'stretch', flexWrap: 'wrap' };
+
 function Features({ chidren, className, ...props }) {
   const classSets = classNames('features', 'section', className);
   return (
     <div className={classSets} {...props}>
       <h2 className="section__header">設計理念</h2>
-      <RowContainer style={{ alignItems: 'stretch', flexWrap: 'wrap' }}>
+      <RowContainer gutter={0} style={customRowStyle}>
         {featureList.map(({ icon, header, content }, index) => (
-          <Col
-            key={index}
-            className="gutter-row"
-            {...{ xs: 24, sm: 12, md: 6, lg: 6 }}
-          >
-            <InViewMonitor
-              classNameNotInView="vis-hidden"
-              classNameInView={`animated fadeInUp`}
-            >
+          <Col key={index} className="gutter-row" {...{ xs: 24, sm: 12, md: 6, lg: 6 }}>
+            <InViewMonitor classNameNotInView="vis-hidden" classNameInView={`animated fadeInUp`}>
               <ItemBox cover={icon} bordered={false}>
                 <h3 className="section__subheader">{header}</h3>
                 <p className="section__paragraph">{content}</p>

@@ -1,9 +1,10 @@
 .footer {
   @media screen and (max-width: $screen-xs) {
-    height: 70vh;
+    height: 100vh;
   }
 
-  @include globalPadding();
+  @include globalPadding;
+
   background: white;
 
   .footer__icon {
@@ -22,4 +23,6 @@
     font-size: 1.25rem;
     font-weight: bold;
   }
+
+  &--mobile {}
 }

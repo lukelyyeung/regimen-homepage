@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import Topbar from '../components/Topbar';
 import { Layout } from 'antd';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
@@ -14,12 +15,21 @@ const { Content, Header, Footer } = Layout;
 export default class GlobalLayout extends Component {
   state = { isMobile: false, isSiderToggled: false };
 
+  // eslint-disable-next-line react/no-deprecated
+  componentWillMount() {
+    this.registerEnquireScreen();
+  }
+
   componentDidMount() {
-    enquireScreen(isMobile => this.setState({ isMobile }));
+    this.registerEnquireScreen();
   }
 
   componentWillUnmount() {
     unenquireScreen();
+  }
+
+  registerEnquireScreen() {
+    enquireScreen(isMobile => this.setState({ isMobile }));
   }
 
   toggleSider = () => {
@@ -60,7 +70,14 @@ export default class GlobalLayout extends Component {
           <Content style={{ height: '100%' }}>
             <MainContent isMobile={isMobile} />
           </Content>
-          <Footer id="contact-us" className="footer">
+          <Footer
+            id="contact-us"
+            className={classnames({
+              footer: true,
+              'footer--mobile': isMobile,
+              'flex-center': isMobile,
+            })}
+          >
             <GlobalFooter />
           </Footer>
         </Layout>
