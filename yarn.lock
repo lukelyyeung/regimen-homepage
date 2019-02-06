@@ -3355,6 +3355,12 @@ enhanced-resolve@^4.1.0:
     memory-fs "^0.4.0"
     tapable "^1.0.0"
 
+enquire-js@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/enquire-js/-/enquire-js-0.2.1.tgz#f2478cf5808d42f54e8231f20fa133493e7f0fcb"
+  dependencies:
+    enquire.js "^2.1.6"
+
 enquire.js@^2.1.6:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/enquire.js/-/enquire.js-2.1.6.tgz#3e8780c9b8b835084c3f60e166dbc3c2a3c89814"
@@ -7327,6 +7333,15 @@ rc-dialog@~7.2.1:
     rc-animate "2.x"
     rc-util "^4.4.0"
 
+rc-drawer@1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/rc-drawer/-/rc-drawer-1.7.7.tgz#b014d1de52457c85c4f3e1f0d647a54031dd260c"
+  dependencies:
+    babel-runtime "6.x"
+    classnames "^2.2.5"
+    prop-types "^15.5.0"
+    rc-util "^4.5.1"
+
 rc-drawer@~1.7.6:
   version "1.7.6"
   resolved "https://registry.yarnpkg.com/rc-drawer/-/rc-drawer-1.7.6.tgz#925ce0768cf81ef5fa83eb22d90c603422b1b1b1"
@@ -7694,6 +7709,12 @@ react-lazy-load@^3.0.13:
 react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+
+react-messenger-customer-chat@0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/react-messenger-customer-chat/-/react-messenger-customer-chat-0.7.2.tgz#922aad45de0d6798dc549cfaf7aac2d907dbb395"
+  dependencies:
+    prop-types "^15.6.0"
 
 react-sizeme@^2.2.0:
   version "2.5.2"

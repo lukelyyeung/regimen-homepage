@@ -1,5 +1,5 @@
 .hero-content {
-	padding: 4rem;
+	@include globalPadding();
 	flex: auto;
 
 	&__header {

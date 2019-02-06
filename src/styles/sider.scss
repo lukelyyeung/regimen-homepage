@@ -1,0 +1,13 @@
+.sider {
+	height: 100%;
+
+	.menu-item {
+		margin: 0 !important;
+		height: 3rem;
+		line-height: 3rem;
+		transition: none;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}
+}

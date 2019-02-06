@@ -1,4 +1,4 @@
 .network {
-	padding: 4rem;
+	@include globalPadding();
 	background: white;
 }

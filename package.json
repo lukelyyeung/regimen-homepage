@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "classnames": "2.2.6",
+    "enquire-js": "0.2.1",
     "gatsby": "^2.0.33",
     "gatsby-cli": "2.4.6",
     "gatsby-plugin-antd": "2.0.2",
@@ -19,10 +20,12 @@
     "http-server": "0.11.1",
     "lodash": "4.17.11",
     "node-sass": "4.11.0",
+    "rc-drawer": "1.7.7",
     "react": "^16.5.1",
     "react-anchor-link-smooth-scroll": "1.0.11",
     "react-dom": "^16.5.1",
     "react-inview-monitor": "2.2.0",
+    "react-messenger-customer-chat": "0.7.2",
     "react-stack-grid": "0.7.1"
   }
 }

@@ -1,56 +1,54 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Menu, Icon } from 'antd';
-
 import logoUrl from './images/logo-white.png';
-import AnchorLink from 'react-anchor-link-smooth-scroll'
-
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 class Topbar extends React.Component {
-	state = {
-		current: 'mail',
-	};
+  static propTypes = {
+    isMobile: PropTypes.bool,
+  };
 
-	handleClick = e => {
-		this.setState({
-			current: e.key,
-		});
-	};
+  state = {
+    current: null,
+  };
 
-	render() {
-		return (
-			<Menu
-				className="topbar"
-				onClick={this.handleClick}
-				selectedKeys={[this.state.current]}
-				mode="horizontal"
-			>
-				<Menu.Item className="topbar__logo">
-				  <AnchorLink offset="100" href="#hero-content">
-						<img src={logoUrl} alt="JoekChong Logo"/>
-					</AnchorLink>
-				</Menu.Item>
-				<Menu.Item key="introduction">
-				<Icon type="reconciliation" />
-				<AnchorLink offset="100" href="#project-introduction">產品介紹</AnchorLink>
-				</Menu.Item>
-				<Menu.Item key="design">
-				<Icon type="team" />
-					<AnchorLink offset="100" href="#features">設計理念</AnchorLink>
-				</Menu.Item>
-				<Menu.Item key="gallery">
-				<Icon type="picture" theme="filled" />
-					<AnchorLink offset="100" href="#gallery">活動紀錄</AnchorLink>
-				</Menu.Item>
-				<Menu.Item key="network">
-				<Icon type="compass" />
-				  <AnchorLink offset="100" href="#practitioner-network">中醫網絡</AnchorLink>
-				</Menu.Item>
-				<Menu.Item key="contactUs">
-				<Icon type="mail" />
-				  <AnchorLink offset="100" href="#contact-us">聯繫我們</AnchorLink>
-				</Menu.Item>
-			</Menu>
-		);
-	}
+  handleClick = e => {
+    this.setState({
+      current: e.key,
+    });
+  };
+
+  render() {
+    const { isMobile, menuItems, isSiderToggled, onMenuIconClick } = this.props;
+    return (
+      <Menu
+        className="topbar"
+        onClick={this.handleClick}
+        selectedKeys={[this.state.current]}
+        mode="horizontal"
+      >
+        <Menu.Item className="topbar__logo">
+          <AnchorLink offset={100} href="#hero-content">
+            <img src={logoUrl} alt="JoekChong Logo" />
+          </AnchorLink>
+        </Menu.Item>
+        {isMobile ? (
+          <Menu.Item className="topbar__toggle-button" key="toggle">
+            <Icon onClick={onMenuIconClick} type={isSiderToggled ? 'menu-unfold' : 'menu-fold'} />
+          </Menu.Item>
+        ) : (
+          menuItems.map(({ label, icon, href }) => (
+            <Menu.Item key={label}>
+              <Icon type={icon} />
+              <AnchorLink offset={100} href={href}>
+                {label}
+              </AnchorLink>
+            </Menu.Item>
+          ))
+        )}
+      </Menu>
+    );
+  }
 }
 
 export default Topbar;
