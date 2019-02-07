@@ -1,58 +1,56 @@
 import React from 'react';
-import StackGrid, { transitions, easings } from 'react-stack-grid';
+import { graphql, StaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
+
 import HoverContainer from './common/HoverContainer';
+import Overlay from './common/Overlay';
+import getImageLabelByFileName from '../utils/getImageLabelByFileName';
 
-const overlayProps = {
-	style: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		color: 'white',
-		fontWeight: 700,
-		height: '100%',
-	},
-};
-
-const ImageOverlay = ({ children }) => <div {...overlayProps}>{children}</div>;
-
-function GridGallery({ images, id, isMobile, ...props }) {
-	return (
-		<div className="section" id={id}>
-			<h2 className="section__header">活動紀錄</h2>
-			<StackGrid
-				monitorImagesLoaded
-				columnWidth={isMobile ? '100%': '33%'}
-				duration={600}
-				gutterWidth={8}
-				gutterHeight={8}
-				easing={easings.cubicOut}
-				appearDelay={600}
-				appear={transitions.appear}
-				appeared={transitions.appeared}
-				enter={transitions.enter}
-				entered={transitions.entered}
-				leaved={transitions.leaved}
-				{...props}
-			>
-				{images.map(({ label, src }) => (
-					<HoverContainer
-						key={label}
-						overlay={
-							<ImageOverlay>
-								<h3 style={{ color: 'white' }}>{label}</h3>
-							</ImageOverlay>
-						}
-					>
-						<img
-							src={src}
-							alt={label}
-							style={{ width: '100%', height: '300px', objectFit: 'cover' }}
-						/>
-					</HoverContainer>
-				))}
-			</StackGrid>
-		</div>
-	);
+function GridGallery({ images, id, isMobile, data, ...props }) {
+  return (
+    <div className="section" id={id}>
+      <h2 className="section__header">活動紀錄</h2>
+      <div className="flex-center flex-center--stretch">
+        <StaticQuery
+          query={graphql`
+            query {
+              allFile(filter: { relativePath: { regex: "/gallery/photo[0-9]{2,}.(jpg)/" } }) {
+                edges {
+                  node {
+										name
+                    childImageSharp {
+                      fluid(maxWidth: 600) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          `}
+          render={({ allFile: { edges } }) =>
+            edges.map(({ node: { name, childImageSharp: { fluid } } }, i) => (
+              <HoverContainer
+                key={i}
+                overlay={
+                  <Overlay>
+                    <h3 style={{ color: 'white' }}>{getImageLabelByFileName(name)}</h3>
+                  </Overlay>
+                }
+                style={{ width: isMobile ? '100%' : '33%', margin: isMobile ? '0.5rem' : '0.1rem' }}
+              >
+                <Img
+                  fluid={fluid}
+                  alt={getImageLabelByFileName(name)}
+                  style={{ width: '100%', height: '300px', objectFit: 'cover' }}
+                />
+              </HoverContainer>
+            ))
+          }
+        />
+      </div>
+    </div>
+  );
 }
 
 export default GridGallery;

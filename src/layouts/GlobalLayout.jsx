@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, cloneElement, Fragment } from 'react';
+import FacebookMessenger from 'react-messenger-customer-chat';
 import classnames from 'classnames';
 import Topbar from '../components/Topbar';
 import { Layout } from 'antd';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
-import MainContent from '../components/Home';
 import GlobalFooter from '../components/GlobalFooter';
 
 import menuItems from '../constants/menuItem';
@@ -46,42 +46,46 @@ export default class GlobalLayout extends Component {
   };
 
   render() {
+    const { children } = this.props;
     const { isMobile, isSiderToggled } = this.state;
+    const isHome = window.location.pathname === '/';
 
     return (
-      <Layout className="application">
-        {isMobile && (
-          <SiderMenu
-            menuItems={menuItems}
-            collapsed={!isSiderToggled}
-            toggleSider={this.toggleSider}
-            closeSider={this.closeSider}
-          />
-        )}
-        <Layout className={isMobile && isSiderToggled ? 'collapsed' : ''}>
-          <Header style={{ padding: 0 }}>
-            <Topbar
-              isMobile={isMobile}
+      <Fragment>
+        <Layout className="application">
+          {isMobile && (
+            <SiderMenu
               menuItems={menuItems}
-              onMenuIconClick={this.toggleSider}
-              isSiderToggled={isSiderToggled}
+              collapsed={!isSiderToggled}
+              toggleSider={this.toggleSider}
+              closeSider={this.closeSider}
             />
-          </Header>
-          <Content style={{ height: '100%' }}>
-            <MainContent isMobile={isMobile} />
-          </Content>
-          <Footer
-            id="contact-us"
-            className={classnames({
-              footer: true,
-              'footer--mobile': isMobile,
-              'flex-center': isMobile,
-            })}
-          >
-            <GlobalFooter />
-          </Footer>
+          )}
+          <Layout className={isMobile && isSiderToggled ? 'collapsed' : ''}>
+            <Header style={{ padding: 0 }}>
+              <Topbar
+                isMobile={isMobile}
+                menuItems={menuItems}
+                onMenuIconClick={this.toggleSider}
+                isSiderToggled={isSiderToggled}
+              />
+            </Header>
+            <Content style={{ height: '100%' }}>{cloneElement(children, { isMobile })}</Content>
+            <Footer
+              id="contact-us"
+              className={classnames({
+                footer: true,
+                'footer--mobile': isMobile,
+                'flex-center': isMobile,
+                grey: !isHome,
+              })}
+            >
+              <GlobalFooter />
+            </Footer>
+          </Layout>
         </Layout>
-      </Layout>
+        <FacebookMessenger pageId="1603230056485437" appId="2192516717732736" />
+      </Fragment>
     );
   }
 }

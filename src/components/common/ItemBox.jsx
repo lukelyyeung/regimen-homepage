@@ -1,10 +1,10 @@
 import React from 'react';
-
 import { Card } from 'antd';
-function ItemBox({ children, className, ...props }) {
-	const classSets = `item-box ${className}`;
+import classnames from 'classnames';
+
+function ItemBox({ children, className='', ...props }) {
 	return (
-		<Card className={classSets} {...props}>
+		<Card className={classnames('item-box', className)} {...props}>
 			{children}
 		</Card>
 	);
