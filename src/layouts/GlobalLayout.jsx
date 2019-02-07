@@ -12,6 +12,7 @@ import SiderMenu from '../components/SiderMenu';
 
 const { Content, Header, Footer } = Layout;
 
+// const windowGlobal = typeof window !== 'undefined' && window;
 export default class GlobalLayout extends Component {
   state = { isMobile: false, isSiderToggled: false };
 
@@ -46,9 +47,12 @@ export default class GlobalLayout extends Component {
   };
 
   render() {
-    const { children } = this.props;
+    const {
+      children,
+      location: { pathname },
+    } = this.props;
     const { isMobile, isSiderToggled } = this.state;
-    const isHome = window.location.pathname === '/';
+    const isHome = pathname === '/';
 
     return (
       <Fragment>
@@ -61,7 +65,7 @@ export default class GlobalLayout extends Component {
               closeSider={this.closeSider}
             />
           )}
-          <Layout className={isMobile && isSiderToggled ? 'collapsed' : ''}>
+          <Layout className={(isMobile && isSiderToggled) ? 'collapsed' : ''}>
             <Header style={{ padding: 0 }}>
               <Topbar
                 isMobile={isMobile}

@@ -31,6 +31,7 @@ $jumbotron-height: 100vh;
   }
 
   &__inner {
+		@include globalPadding();
     position: absolute;
     display: flex;
     width: 100%;

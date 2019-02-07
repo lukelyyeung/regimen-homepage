@@ -19,7 +19,7 @@ const socialIcons = [
   {
     type: 'mail',
     onClick() {
-      window.open('mailto:soapchong.chinesemedicine@gmail.com');
+      openNewTab('mailto:soapchong.chinesemedicine@gmail.com');
     },
   },
 ];
