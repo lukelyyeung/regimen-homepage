@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Icon } from 'antd';
-import logoUrl from './images/logo-white.png';
+import logoUrl from '../../static/images/logo-white.png';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 class Topbar extends React.Component {
   static propTypes = {

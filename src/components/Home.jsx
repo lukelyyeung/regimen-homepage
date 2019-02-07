@@ -2,16 +2,16 @@ import React from 'react';
 
 import Jumbotron from './Jumbotron';
 import HeroContent from './HeroContent';
-import heroBackgroundUrl from './images/hero.jpg';
+import heroBackgroundUrl from '../../static/images/hero.jpg';
 import ProjectIntro from './ProjectIntro';
 import Features from './Features';
 
-import photo1 from './images/photo01.jpg';
-import photo2 from './images/photo02.jpg';
-import photo3 from './images/photo03.jpg';
-import photo4 from './images/photo04.jpg';
-import photo5 from './images/photo05.jpg';
-import photo6 from './images/photo06.jpg';
+import photo1 from '../../static/images/photo01.jpg';
+import photo2 from '../../static/images/photo02.jpg';
+import photo3 from '../../static/images/photo03.jpg';
+import photo4 from '../../static/images/photo04.jpg';
+import photo5 from '../../static/images/photo05.jpg';
+import photo6 from '../../static/images/photo06.jpg';
 import GridGallery from './GridGallery';
 import NetWorkSearch from './NetWorkSearch';
 
