@@ -7,13 +7,15 @@ import { LayoutContext } from '../store';
 
 export default function Album({
   data: {
-    allFile: { edges },
+    markdownRemark: {
+      frontmatter: { images },
+    },
   },
 }) {
   return (
     <section className="section">
       <LayoutContext.Consumer>
-        {context => <GridGallery {...context} images={edges} />}
+        {context => <GridGallery {...context} images={images} />}
       </LayoutContext.Consumer>
     </section>
   );
@@ -23,17 +25,20 @@ Album.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export const query = graphql`
+export const pageQuery = graphql`
   query {
-    allFile(filter: { relativePath: { regex: "/gallery/photo[0-9]{2,}.(jpg)/" } }) {
-      edges {
-        node {
-          name
-          childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
+    markdownRemark(frontmatter: { templateKey: { eq: "album" } }) {
+      frontmatter {
+        images {
+          image {
+            childImageSharp {
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
+          alt
+          caption
         }
       }
     }

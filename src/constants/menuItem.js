@@ -20,12 +20,17 @@ const menuItems = [
   {
     label: '活動紀錄',
     icon: 'picture',
-    path: '/Album',
+    path: '/album',
   },
   {
     label: '中醫網絡',
     icon: 'reconciliation',
     path: '/Network',
+  },
+  {
+    label: '有關文章',
+    icon: 'book',
+    path: '/blog',
   },
   {
     label: '聯繫我們',

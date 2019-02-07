@@ -3,6 +3,7 @@ const theme = require('./src/theme');
 module.exports = {
   siteMetadata: {
     title: 'Regimen homepage',
+    description: 'This page is about Chinese medicine based cosmetic product',
   },
   plugins: [
     {
@@ -18,6 +19,23 @@ module.exports = {
         style: true,
       },
     },
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/static/media`,
+        name: 'media',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/pages`,
+        name: 'pages',
+      },
+    },
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-polyfill-io',
       options: {
@@ -26,14 +44,30 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: 'gatsby-transformer-remark',
       options: {
-        path: `${__dirname}/static/images`,
-        name: 'images',
+        plugins: [
+          {
+            resolve: 'gatsby-remark-relative-images',
+            options: {
+              name: 'uploads',
+            },
+          },
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 2048,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: 'static',
+            },
+          },
+        ],
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -43,9 +77,19 @@ module.exports = {
         background_color: '#f7f0eb',
         theme_color: '#a2466c',
         display: 'standalone',
-        icon: 'static/images/logo.png',
+        icon: 'static/media/logo.png',
         include_favicon: true,
       },
     },
+    {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {
+        modulePath: `${__dirname}/src/cms/cms.js`,
+        enableIdentityWidget: true,
+        publicPath: 'admin',
+        htmlTitle: 'Content Manager',
+      },
+    },
+    'gatsby-plugin-netlify',
   ],
 };

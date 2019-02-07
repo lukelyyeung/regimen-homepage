@@ -7,14 +7,7 @@
 }
 
 .ant-layout {
-	background: white;
-}
-
-.row-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
+  background: white;
 }
 
 .flex-center {
@@ -31,6 +24,13 @@
     align-items: stretch;
     align-content: flex-start;
   }
+}
+
+.row-container {
+  .flex-center();
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
 }
 
 .section {
@@ -61,11 +61,11 @@
     font-size: 700;
     color: #757575;
     margin-bottom: 0.25rem;
-	}
+  }
 
-	&--alt {
-		background: #f0f2f5;
-	}
+  &--alt {
+    background: #f0f2f5;
+  }
 }
 
 .overlay {
@@ -77,30 +77,30 @@
 }
 
 .tag {
-	color: #62BCBD;
-	cursor: pointer;
-	border: 1px solid #62BCBD;
-	padding: 0.3rem 0.5rem;
-	border-radius: 0.3rem;
-	margin: 0.3rem;
-	width: auto;
-	display: inline-block;
-	transition: all 200ms ease-in-out;
+  color: #62bcbd;
+  cursor: pointer;
+  border: 1px solid #62bcbd;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+  margin: 0.3rem;
+  width: auto;
+  display: inline-block;
+  transition: all 200ms ease-in-out;
 
-	.anticon {
-		margin-right: 0.3rem;
-	}
+  .anticon {
+    margin-right: 0.3rem;
+  }
 
-	&:hover {
-		color: white;
-		background-color: #62BCBD;
-	}
+  &:hover {
+    color: white;
+    background-color: #62bcbd;
+  }
 }
 
 .vis-hidden {
-	opacity: 0;
+  opacity: 0;
 }
 
 .full-height {
-	height: 100vh;
+  height: 100vh;
 }

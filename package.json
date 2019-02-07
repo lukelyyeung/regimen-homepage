@@ -30,6 +30,8 @@
     "google-maps-react": "2.0.2",
     "http-server": "0.11.1",
     "lodash": "4.17.11",
+    "lodash-es": "4.17.11",
+    "netlify-cms": "2.4.1",
     "node-sass": "4.11.0",
     "rc-drawer": "1.7.7",
     "react": "^16.5.1",
@@ -44,11 +46,18 @@
   "devDependencies": {
     "babel-eslint": "10.0.1",
     "gatsby-plugin-less": "2.0.11",
+    "gatsby-plugin-netlify": "2.0.9",
+    "gatsby-plugin-netlify-cms": "3.0.12",
     "gatsby-plugin-polyfill-io": "1.0.5",
     "gatsby-plugin-react-helmet": "3.0.6",
     "gatsby-plugin-sharp": "2.0.20",
+    "gatsby-remark-copy-linked-files": "2.0.9",
+    "gatsby-remark-images": "3.0.3",
+    "gatsby-remark-relative-images": "0.2.1",
     "gatsby-source-filesystem": "2.0.20",
+    "gatsby-transformer-remark": "2.2.4",
     "gatsby-transformer-sharp": "2.1.13",
-    "less": "3.9.0"
+    "less": "3.9.0",
+    "path": "0.12.7"
   }
 }

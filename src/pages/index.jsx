@@ -2,7 +2,7 @@ import React from 'react';
 
 import Jumbotron from '../components/Jumbotron';
 import HeroContent from '../components/HeroContent';
-import heroBackgroundUrl from '../../static/images/hero.jpg';
+import heroBackgroundUrl from '../../static/media/hero.jpg';
 import ProjectIntro from '../components/ProjectIntro';
 import Features from '../components/Features';
 
