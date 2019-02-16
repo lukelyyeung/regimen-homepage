@@ -6,9 +6,9 @@ import HoverContainer from './common/HoverContainer';
 import Overlay from './common/Overlay';
 import getImageLabelByFileName from '../utils/getImageLabelByFileName';
 
-function GridGallery({ images, id, isMobile, data, ...props }) {
+function GridGallery({ images, isMobile, data, ...props }) {
   return (
-    <div className="section" id={id}>
+    <div className="section" {...props}>
       <h2 className="section__header">活動紀錄</h2>
       <div className="flex-center flex-center--stretch">
         <StaticQuery
@@ -17,7 +17,7 @@ function GridGallery({ images, id, isMobile, data, ...props }) {
               allFile(filter: { relativePath: { regex: "/gallery/photo[0-9]{2,}.(jpg)/" } }) {
                 edges {
                   node {
-										name
+                    name
                     childImageSharp {
                       fluid(maxWidth: 600) {
                         ...GatsbyImageSharpFluid

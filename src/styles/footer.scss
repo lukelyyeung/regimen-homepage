@@ -1,7 +1,4 @@
 .footer {
-  @media screen and (max-width: $screen-xs) {
-    height: 100vh;
-	}
 	@include globalPadding();
 
 	background: white;

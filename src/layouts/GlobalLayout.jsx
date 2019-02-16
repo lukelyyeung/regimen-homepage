@@ -1,9 +1,12 @@
-import React, { Component, cloneElement, Fragment } from 'react';
-import FacebookMessenger from 'react-messenger-customer-chat';
-import classnames from 'classnames';
-import Topbar from '../components/Topbar';
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Layout } from 'antd';
+import FacebookMessenger from 'react-messenger-customer-chat';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
+import classnames from 'classnames';
+
+import { LayoutContext } from '../store';
+import Topbar from '../components/Topbar';
 import GlobalFooter from '../components/GlobalFooter';
 
 import menuItems from '../constants/menuItem';
@@ -12,8 +15,14 @@ import SiderMenu from '../components/SiderMenu';
 
 const { Content, Header, Footer } = Layout;
 
-// const windowGlobal = typeof window !== 'undefined' && window;
 export default class GlobalLayout extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+    }).isRequired,
+  };
+
   state = { isMobile: false, isSiderToggled: false };
 
   // eslint-disable-next-line react/no-deprecated
@@ -29,22 +38,37 @@ export default class GlobalLayout extends Component {
     unenquireScreen();
   }
 
-  registerEnquireScreen() {
-    enquireScreen(isMobile => this.setState({ isMobile }));
-  }
-
   toggleSider = () => {
     const { isMobile, isSiderToggled } = this.state;
     if (!isMobile) {
       return;
     }
 
-    this.setState({ ...this.state, isSiderToggled: !isSiderToggled });
+    this.setState(prevState => ({ ...prevState, isSiderToggled: !isSiderToggled }));
   };
 
   closeSider = () => {
-    this.setState({ ...this.state, isSiderToggled: false });
+    this.setState(prevState => ({ ...prevState, isSiderToggled: false }));
   };
+
+  registerEnquireScreen() {
+    enquireScreen(isMobile => this.setState({ isMobile }));
+	}
+
+	getMenuItems = () => {
+		const { location: { pathname } } = this.props;
+		return menuItems.filter(({isVisibleAt, isNotVisibleAt}) => {
+			if (isVisibleAt) {
+				return isVisibleAt.find(path => path === pathname);
+			}
+
+			if (isNotVisibleAt) {
+				return !isNotVisibleAt.find(path => path === pathname);
+			}
+
+			return true;
+		})
+	}
 
   render() {
     const {
@@ -59,22 +83,24 @@ export default class GlobalLayout extends Component {
         <Layout className="application">
           {isMobile && (
             <SiderMenu
-              menuItems={menuItems}
+              menuItems={this.getMenuItems()}
               collapsed={!isSiderToggled}
               toggleSider={this.toggleSider}
               closeSider={this.closeSider}
             />
           )}
-          <Layout className={(isMobile && isSiderToggled) ? 'collapsed' : ''}>
+          <Layout className={isMobile && isSiderToggled ? 'collapsed' : ''}>
             <Header style={{ padding: 0 }}>
               <Topbar
                 isMobile={isMobile}
-                menuItems={menuItems}
+                menuItems={this.getMenuItems()}
                 onMenuIconClick={this.toggleSider}
                 isSiderToggled={isSiderToggled}
               />
             </Header>
-            <Content style={{ height: '100%' }}>{cloneElement(children, { isMobile })}</Content>
+            <Content style={{ height: '100%' }}>
+              <LayoutContext.Provider value={{ isMobile }}>{children}</LayoutContext.Provider>
+            </Content>
             <Footer
               id="contact-us"
               className={classnames({

@@ -3,8 +3,8 @@ module.exports = {
     title: 'JoekChong homepage',
   },
   plugins: [
-    'gatsby-plugin-antd',
     'gatsby-plugin-sass',
+    'gatsby-plugin-antd',
     {
       resolve: 'gatsby-plugin-polyfill-io',
       options: {
@@ -13,7 +13,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/static/images`,
         name: 'images',

@@ -1,3 +1,5 @@
+$global-header-color: #39BFBE;
+
 .topbar {
   width: 100%;
   min-height: 100%;
@@ -12,25 +14,25 @@
     align-items: center;
     border-bottom: none !important;
 
-    a, .anticon {
+    a, .anticon, span {
       color: white;
       transition: all 200ms ease-in;
     }
 
     &-active, &-selected, &:hover {
-      a, .anticon {
-				color: #D18F00;
-				transform: scale(1.1) translateY(2.5px);
+      a, .anticon, span {
+        color: #D18F00;
+        transform: scale(1.1) translateY(2.5px);
       }
     }
-	}
+  }
 
-	&__toggle-button {
-		.anticon {
-			font-size: 1.5rem;
-			color: #fff !important;
-		}
-	}
+  &__toggle-button {
+    .anticon {
+      font-size: 1.5rem;
+      color: #fff !important;
+    }
+  }
 
   &__logo {
     margin-right: auto;
@@ -48,5 +50,9 @@
     &.ant-menu-item.ant-menu-item-selected, &.ant-menu-item.ant-menu-item-active {
       border-bottom: none !important;
     }
+  }
+
+  .ant-layout-header {
+    background-color: $global-header-color;
   }
 }

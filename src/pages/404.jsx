@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { Button } from 'antd';
 import GlobalLayout from '../layouts/GlobalLayout';
 
 function NotFoundPage(props) {
-  const {
-    location: { pathname },
-  } = props;
+  const { location: { pathname } } = props;
+
   return (
     <GlobalLayout {...props}>
       <div
@@ -22,5 +22,11 @@ function NotFoundPage(props) {
     </GlobalLayout>
   );
 }
+
+NotFoundPage.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }).isRequired,
+};
 
 export default NotFoundPage;

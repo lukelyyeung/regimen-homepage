@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import DrawerMenu from 'rc-drawer';
 import { Layout, Menu, Icon } from 'antd';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import { navigateTo } from 'gatsby';
 
 const { Sider } = Layout;
 // const { SubMenu } = Menu;
@@ -194,12 +195,19 @@ export default class SiderMenu extends PureComponent {
   //     openKeys: moreThanOne ? [lastOpenKey] : [...openKeys],
   //   });
   // };
+
+  navigateTo = path => () => navigateTo(path);
+
   renderMenuItems() {
     const { closeSider } = this.props;
-    return this.props.menuItems.map(({ label, icon, href }) => (
+    return this.props.menuItems.map(({ label, icon, href, path }) => (
       <Menu.Item key={label} className="menu-item" onClick={closeSider}>
         <Icon className="flex-center" type={icon} />
-        <AnchorLink href={href}>{label}</AnchorLink>
+        {path ? (
+          <span onClick={this.navigateTo(path)}>{label}</span>
+        ) : (
+          <AnchorLink href={href}>{label}</AnchorLink>
+        )}
       </Menu.Item>
     ));
   }
