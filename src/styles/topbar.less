@@ -1,40 +1,40 @@
 .topbar {
-  width: 100%;
-  min-height: 100%;
+	width: 100%;
+	height: 100%;
   display: flex;
   align-items: stretch;
-  background-color: transparent;
-  border: none;
+  background-color: transparent !important;
+  border: none !important;
 
-  .ant-menu-item {
-    font-weight: 700;
-    display: flex;
-    align-items: center;
+  &__item {
+    font-weight: 700 !important;
+    display: flex !important;
+    align-items: center !important;
     border-bottom: none !important;
 
     a, .anticon {
-      color: white;
-      transition: all 200ms ease-in;
+      color: @white !important;
+      transition: all 200ms ease-in!important;
     }
 
     &-active, &-selected, &:hover {
       a, .anticon {
-				color: #D18F00;
-				transform: scale(1.1) translateY(2.5px);
+				color: @black !important;
+				transform: scale(1.1) translateY(2.5px)!important;
       }
     }
 	}
 
 	&__toggle-button {
 		.anticon {
-			font-size: 1.5rem;
+			font-size: 1.5rem!important;
 			color: #fff !important;
 		}
 	}
 
   &__logo {
-    margin-right: auto;
-    transition: transform 100ms ease-in;
+    margin-right: auto!important;
+    transition: transform 100ms ease-in!important;
 
     img {
       width: 3rem;

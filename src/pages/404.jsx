@@ -1,14 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Button } from 'antd';
-import GlobalLayout from '../layouts/GlobalLayout';
 
 function NotFoundPage(props) {
-  const {
-    location: { pathname },
-  } = props;
+  const { location: { pathname } } = props;
   return (
-    <GlobalLayout {...props}>
       <div
         style={{ height: '100vh', width: '100%', backgroundColor: '#fff' }}
         className="flex-center flex-center--column"
@@ -19,7 +15,6 @@ function NotFoundPage(props) {
           <Link to="/">返回首頁</Link>
         </Button>
       </div>
-    </GlobalLayout>
   );
 }
 

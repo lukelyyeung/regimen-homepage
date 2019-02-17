@@ -1,4 +1,10 @@
-$delay: 0.5 1 1.5 2 2.5 3;
+@delay: 0.5, 1, 1.5, 2, 2.5, 3;
+
+each(@delay, {
+	.animate-delay-@{value} {
+		animation-delay: @value;
+	};
+});
 
 @keyframes fadeInUp {
   from {
@@ -46,11 +52,6 @@ $delay: 0.5 1 1.5 2 2.5 3;
 	animation-timing-function: ease-out;
 }
 
-@each $i in $delay {
-  .animate-delay-#{$i} {
-    animation-delay: #{$i}s;
-  }
-}
 
 .animated.slow {
 	animation-duration: 1.5s;

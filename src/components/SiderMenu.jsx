@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import DrawerMenu from 'rc-drawer';
 import { Layout, Menu, Icon } from 'antd';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
+import NavigationLink from './NavigationLink';
 
 const { Sider } = Layout;
 // const { SubMenu } = Menu;
@@ -196,10 +196,10 @@ export default class SiderMenu extends PureComponent {
   // };
   renderMenuItems() {
     const { closeSider } = this.props;
-    return this.props.menuItems.map(({ label, icon, href }) => (
+    return this.props.menuItems.map(({ label, icon, ...navigationProps }) => (
       <Menu.Item key={label} className="menu-item" onClick={closeSider}>
         <Icon className="flex-center" type={icon} />
-        <AnchorLink href={href}>{label}</AnchorLink>
+				<NavigationLink {...navigationProps} label={label} />
       </Menu.Item>
     ));
   }
@@ -231,8 +231,6 @@ export default class SiderMenu extends PureComponent {
           <Menu
             key="Menu"
             mode="inline"
-            // onOpenChange={this.handleOpenChange}
-            // selectedKeys={selectedKeys}
             style={{ padding: '1.5rem 0', width: '100%', flex: 1 }}
           >
             {this.renderMenuItems()}

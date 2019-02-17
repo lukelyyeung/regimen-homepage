@@ -1,25 +1,20 @@
-import React, { Component, cloneElement, Fragment } from 'react';
+import React, { PureComponent, cloneElement } from 'react';
 import FacebookMessenger from 'react-messenger-customer-chat';
 import classnames from 'classnames';
 import Topbar from '../components/Topbar';
 import { Layout } from 'antd';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
-import GlobalFooter from '../components/GlobalFooter';
 
-import menuItems from '../constants/menuItem';
-import '../styles/main.scss';
+import { LayoutContext } from '../store';
 import SiderMenu from '../components/SiderMenu';
+import GlobalFooter from '../components/GlobalFooter';
+import menuItems from '../constants/menuItem';
+import '../styles/main.less';
 
 const { Content, Header, Footer } = Layout;
 
-// const windowGlobal = typeof window !== 'undefined' && window;
-export default class GlobalLayout extends Component {
+export default class GlobalLayout extends PureComponent {
   state = { isMobile: false, isSiderToggled: false };
-
-  // eslint-disable-next-line react/no-deprecated
-  componentWillMount() {
-    this.registerEnquireScreen();
-  }
 
   componentDidMount() {
     this.registerEnquireScreen();
@@ -55,7 +50,7 @@ export default class GlobalLayout extends Component {
     const isHome = pathname === '/';
 
     return (
-      <Fragment>
+      <LayoutContext.Provider value={{ isMobile }}>
         <Layout className="application">
           {isMobile && (
             <SiderMenu
@@ -65,7 +60,7 @@ export default class GlobalLayout extends Component {
               closeSider={this.closeSider}
             />
           )}
-          <Layout className={(isMobile && isSiderToggled) ? 'collapsed' : ''}>
+          <Layout className={isMobile && isSiderToggled ? 'collapsed' : ''}>
             <Header style={{ padding: 0 }}>
               <Topbar
                 isMobile={isMobile}
@@ -89,7 +84,7 @@ export default class GlobalLayout extends Component {
           </Layout>
         </Layout>
         <FacebookMessenger pageId="1603230056485437" appId="2192516717732736" />
-      </Fragment>
+      </LayoutContext.Provider>
     );
   }
 }

@@ -1,13 +1,13 @@
 .footer {
-  @media screen and (max-width: $screen-xs) {
+  @media screen and (max-width: @screen-xs) {
     height: 100vh;
 	}
-	@include globalPadding();
+	.globalPadding();
 
 	background: white;
 
 	&.grey {
-		background: $footer-background-color;
+		background: @footer-background-color;
 	}
 
   .footer__icon {
@@ -27,5 +27,4 @@
     font-weight: bold;
   }
 
-  &--mobile {}
 }

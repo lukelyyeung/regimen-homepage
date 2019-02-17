@@ -3,8 +3,19 @@ module.exports = {
     title: 'JoekChong homepage',
   },
   plugins: [
-    'gatsby-plugin-antd',
-    'gatsby-plugin-sass',
+    {
+      resolve: 'gatsby-plugin-less',
+      options: {
+				modifyVars: require('./src/theme'),
+        javascriptEnabled: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-antd',
+      options: {
+        style: true,
+      },
+    },
     {
       resolve: 'gatsby-plugin-polyfill-io',
       options: {

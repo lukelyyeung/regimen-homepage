@@ -1,0 +1,28 @@
+@normal-color: #d9d9d9;
+@black: #2e2e2e;
+@white: #fff;
+
+@footer-background-color: #eee;
+@screen-xs: 575px;
+@screen-sm: 767px;
+@screen-md: 991px;
+@screen-lg: 1199px;
+@screen-xl: 1599px;
+
+html {
+	font-size: 16px;
+}
+
+html, body, #___gatsby {
+	height: 100%;
+}
+
+.ant-layout {
+	min-height: 100vh;
+	overflow-x: hidden;
+	transition: all 200ms ease-in;
+
+	&.collapsed {
+		transform: translateX(220px);
+	}
+}
