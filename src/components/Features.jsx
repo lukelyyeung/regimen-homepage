@@ -47,7 +47,7 @@ const customRowStyle = {
 };
 
 function Features({ chidren, className, ...props }) {
-  const classSets = classNames('features', 'section', className);
+  const classSets = classNames('features', 'section', 'section--alt', className);
   return (
     <div className={classSets} {...props}>
       <h2 className="section__header">設計理念</h2>

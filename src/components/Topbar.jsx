@@ -1,29 +1,31 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Icon } from 'antd';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import NavigationLink from './NavigationLink';
+
 class Topbar extends PureComponent {
   static propTypes = {
-		isMobile: PropTypes.bool,
-		logo: PropTypes.string,
+    logo: PropTypes.string,
+    isMobile: PropTypes.bool.isRequired,
+    onMenuIconClick: PropTypes.func.isRequired,
+    isSiderToggled: PropTypes.bool.isRequired,
+    menuItems: PropTypes.array.isRequired,
   };
 
-  state = {
-    current: null,
+  static defaultProps = {
+    logo: null,
   };
 
-  handleClick = e => {
-    this.setState({
-      current: e.key,
-    });
-  };
+  state = { current: null };
+
+  handleClick = e => this.setState({ current: e.key });
 
   renderLogo() {
-		const { logo } = this.props;
-		if (!logo) {
-			return null;
-		}
+    const { logo } = this.props;
+    if (!logo) {
+      return null;
+    }
 
     return (
       <Menu.Item className="topbar__logo topbar__item" key="logo">
@@ -51,12 +53,13 @@ class Topbar extends PureComponent {
   }
 
   render() {
+    const { current } = this.state;
     return (
       <Menu
         onClick={this.handleClick}
         className="topbar"
+        selectedKeys={[current]}
         mode="horizontal"
-        selectedKeys={[this.state.current]}
       >
         {this.renderLogo()}
         {this.renderMenuItems()}

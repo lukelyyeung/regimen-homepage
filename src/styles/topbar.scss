@@ -1,0 +1,58 @@
+$global-header-color: #39BFBE;
+
+.topbar {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: stretch;
+  background-color: transparent;
+  border: none;
+
+  .ant-menu-item {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    border-bottom: none !important;
+
+    a, .anticon, span {
+      color: white;
+      transition: all 200ms ease-in;
+    }
+
+    &-active, &-selected, &:hover {
+      a, .anticon, span {
+        color: #D18F00;
+        transform: scale(1.1) translateY(2.5px);
+      }
+    }
+  }
+
+  &__toggle-button {
+    .anticon {
+      font-size: 1.5rem;
+      color: #fff !important;
+    }
+  }
+
+  &__logo {
+    margin-right: auto;
+    transition: transform 100ms ease-in;
+
+    img {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    &:hover, &:focus {
+      transform: scale(1.1);
+    }
+
+    &.ant-menu-item.ant-menu-item-selected, &.ant-menu-item.ant-menu-item-active {
+      border-bottom: none !important;
+    }
+  }
+
+  .ant-layout-header {
+    background-color: $global-header-color;
+  }
+}

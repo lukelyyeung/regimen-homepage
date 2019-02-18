@@ -9,5 +9,5 @@ const photoLabelMapping = {
 
 export default function getImageLabelByFileName(filename) {
   // @Todo temp solution for image tags, moving to CMS in the future
-  return photoLabelMapping[filename] || ''
+  return photoLabelMapping[filename] || '';
 }

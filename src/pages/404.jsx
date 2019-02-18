@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { Button } from 'antd';
 
@@ -17,5 +18,11 @@ function NotFoundPage(props) {
       </div>
   );
 }
+
+NotFoundPage.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }).isRequired,
+};
 
 export default NotFoundPage;
