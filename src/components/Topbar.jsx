@@ -40,19 +40,18 @@ class Topbar extends React.Component {
       );
     }
 
-    return menuItems.map(({ label, icon, ...navigationProps }) => (
-      <Menu.Item key={label} className="topbar__item">
-        <Icon type={icon} />
-        <NavigationLink {...navigationProps} label={label} />
-      </Menu.Item>
+    return menuItems.map(navigationProps => (
+      <NavigationLink {...navigationProps} className="topbar__item" key={navigationProps.label} />
     ));
   }
 
   render() {
     return (
       <Menu
+        onClick={this.handleClick}
         className="topbar"
         mode="horizontal"
+        selectedKeys={[this.state.current]}
       >
         {this.renderLogo()}
         {this.renderMenuItems()}

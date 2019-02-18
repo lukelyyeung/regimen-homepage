@@ -1,6 +1,6 @@
 .topbar {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: stretch;
   background-color: transparent !important;
@@ -12,40 +12,48 @@
     align-items: center !important;
     border-bottom: none !important;
 
-    a, .anticon {
+    a,
+    .anticon {
       color: @white !important;
-      transition: all 200ms ease-in!important;
+      transition: all 200ms ease-in !important;
     }
 
-    &-active, &-selected, &:hover {
-      a, .anticon {
-				color: @black !important;
-				transform: scale(1.1) translateY(2.5px)!important;
+    &.ant-menu-item {
+      &-active,
+      &-selected,
+      &:hover {
+        a,
+        .anticon {
+          color: @black !important;
+          transform: scale(1.1) translateY(2.5px) !important;
+        }
       }
     }
-	}
+  }
 
-	&__toggle-button {
-		.anticon {
-			font-size: 1.5rem!important;
-			color: #fff !important;
-		}
-	}
+  &__toggle-button {
+    .anticon {
+      font-size: 1.5rem !important;
+      color: #fff !important;
+    }
+  }
 
   &__logo {
-    margin-right: auto!important;
-    transition: transform 100ms ease-in!important;
+    margin-right: auto !important;
+    transition: transform 100ms ease-in !important;
 
     img {
       width: 3rem;
       height: 3rem;
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       transform: scale(1.1);
     }
 
-    &.ant-menu-item.ant-menu-item-selected, &.ant-menu-item.ant-menu-item-active {
+    &.ant-menu-item.ant-menu-item-selected,
+    &.ant-menu-item.ant-menu-item-active {
       border-bottom: none !important;
     }
   }
