@@ -9,6 +9,7 @@ import { LayoutContext } from '../store';
 import SiderMenu from '../components/SiderMenu';
 import GlobalFooter from '../components/GlobalFooter';
 import menuItems from '../constants/menuItem';
+import logo from '../../static/images/logo-white.png'
 import '../styles/main.less';
 
 const { Content, Header, Footer } = Layout;
@@ -63,6 +64,7 @@ export default class GlobalLayout extends PureComponent {
           <Layout className={isMobile && isSiderToggled ? 'collapsed' : ''}>
             <Header style={{ padding: 0 }}>
               <Topbar
+								logo={logo}
                 isMobile={isMobile}
                 menuItems={menuItems}
                 onMenuIconClick={this.toggleSider}

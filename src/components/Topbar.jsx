@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Icon } from 'antd';
-import logoUrl from '../../static/images/logo-white.png';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import NavigationLink from './NavigationLink';
-class Topbar extends React.Component {
+class Topbar extends PureComponent {
   static propTypes = {
-    isMobile: PropTypes.bool,
+		isMobile: PropTypes.bool,
+		logo: PropTypes.string,
   };
 
   state = {
@@ -20,10 +20,15 @@ class Topbar extends React.Component {
   };
 
   renderLogo() {
+		const { logo } = this.props;
+		if (!logo) {
+			return null;
+		}
+
     return (
       <Menu.Item className="topbar__logo topbar__item" key="logo">
         <AnchorLink offset={100} href="#hero-content">
-          <img src={logoUrl} alt="JoekChong Logo" />
+          <img src={logo} alt="Brand Logo" />
         </AnchorLink>
       </Menu.Item>
     );
