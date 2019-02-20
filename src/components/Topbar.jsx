@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import { Menu, Icon } from 'antd';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
 import NavigationLink from './NavigationLink';
 
 class Topbar extends PureComponent {
@@ -29,9 +29,9 @@ class Topbar extends PureComponent {
 
     return (
       <Menu.Item className="topbar__logo topbar__item" key="logo">
-        <AnchorLink offset={100} href="#hero-content">
+        <Link to="/">
           <img src={logo} alt="Brand Logo" />
-        </AnchorLink>
+        </Link>
       </Menu.Item>
     );
   }

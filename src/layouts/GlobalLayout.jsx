@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FacebookMessenger from 'react-messenger-customer-chat';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
@@ -16,7 +16,7 @@ import '../styles/main.less';
 
 const { Content, Header, Footer } = Layout;
 
-export default class GlobalLayout extends PureComponent {
+export default class GlobalLayout extends Component {
   static propTypes = {
     location: PropTypes.shape({
       pathname: PropTypes.string,
@@ -97,7 +97,7 @@ export default class GlobalLayout extends PureComponent {
                 isSiderToggled={isSiderToggled}
               />
             </Header>
-            <Content style={{ height: '100%' }}>
+            <Content>
               <LayoutContext.Provider value={{ isMobile }}>{children}</LayoutContext.Provider>
             </Content>
             <Footer

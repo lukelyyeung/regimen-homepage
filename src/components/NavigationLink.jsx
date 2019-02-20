@@ -5,7 +5,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { Icon, Menu } from 'antd';
 import { Link } from 'gatsby';
 
-import withLocation from '../components/HOC/withLocation';
+import withLocation from './HOC/withLocation';
 
 function NavigationLink({
   label,
@@ -18,22 +18,29 @@ function NavigationLink({
   ...otherProps
 }) {
   if (
-    (notAvailableAt && notAvailableAt.find(path => path === pathname)) ||
-    (availableAt && !availableAt.find(path => path === pathname))
+    (notAvailableAt && notAvailableAt.find(notAvailablePath => notAvailablePath === pathname))
+    || (availableAt && !availableAt.find(availablePath => availablePath === pathname))
   ) {
     return null;
   }
 
+  const innerElement = (
+    <div className="flex-center">
+      {icon && <Icon type={icon} />}
+      {label}
+    </div>
+  );
+
   let linkElement = null;
 
   if (path) {
-    linkElement = <Link to={path}>{label}</Link>;
+    linkElement = <Link to={path}>{innerElement}</Link>;
   }
 
   if (href) {
     linkElement = (
       <AnchorLink offset={100} href={href}>
-        {label}
+        {innerElement}
       </AnchorLink>
     );
   }
@@ -44,18 +51,25 @@ function NavigationLink({
 
   const menuItemProps = omit(otherProps, ['navigate']);
 
-  return (
-    <Menu.Item {...menuItemProps}>
-      {icon && <Icon className="flex-center" type={icon} />}
-      {linkElement}
-    </Menu.Item>
-  );
+  return <Menu.Item {...menuItemProps}>{linkElement}</Menu.Item>;
 }
 
 export default withLocation(NavigationLink);
 
 NavigationLink.propTypes = {
+  icon: PropTypes.node,
+  location: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
   path: PropTypes.string,
   href: PropTypes.string,
+  availableAt: PropTypes.array,
+  notAvailableAt: PropTypes.array,
+};
+
+NavigationLink.defaultProps = {
+  icon: null,
+  path: null,
+  href: null,
+  availableAt: null,
+  notAvailableAt: null,
 };

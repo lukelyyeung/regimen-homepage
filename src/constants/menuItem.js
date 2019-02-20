@@ -30,7 +30,6 @@ const menuItems = [
   {
     label: '聯繫我們',
     icon: 'mail',
-    availableAt: ['/'],
     href: '#contact-us',
   },
 ];

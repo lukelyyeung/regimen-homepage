@@ -6,9 +6,9 @@
     "develop": "gatsby develop --https",
     "start": "npm run develop",
     "build": "rm -rf public && gatsby build",
-		"serve": "gatsby serve",
-		"prod": "gatsby build && gatsby serve",
-		"lint": "eslint ./src",
+    "serve": "gatsby serve",
+    "prod": "gatsby build && gatsby serve",
+    "lint": "eslint ./src",
     "deploy:surge": "yarn run build && surge ./public/ --domain https://joekchong.surge.sh"
   },
   "dependencies": {
@@ -37,16 +37,17 @@
     "react-helmet": "5.2.0",
     "react-inview-monitor": "2.2.0",
     "react-messenger-customer-chat": "0.7.2",
+    "react-pose": "4.0.7",
     "react-stack-grid": "0.7.1"
   },
   "devDependencies": {
-    "gatsby-plugin-less": "2.0.11",
     "babel-eslint": "10.0.1",
+    "gatsby-plugin-less": "2.0.11",
     "gatsby-plugin-polyfill-io": "1.0.5",
     "gatsby-plugin-react-helmet": "3.0.6",
     "gatsby-plugin-sharp": "2.0.20",
     "gatsby-source-filesystem": "2.0.20",
     "gatsby-transformer-sharp": "2.1.13",
     "less": "3.9.0"
-	}
+  }
 }
