@@ -8,10 +8,14 @@
     "import/no-extraneous-dependencies": "off",
 		"react/forbid-prop-types": false,
 		"arrow-parens": "off",
-    "react/jsx-one-expression-per-line": "off",
-    "react/jsx-filename-extension": "off",
+		"comma-dangle": "off",
+		"react/jsx-one-expression-per-line": "off",
+		"react/destructuring-assignment": "off",
+		"implicit-arrow-linebreak": "off",
+		"react/jsx-filename-extension": "off",
+		"react/prefer-stateless-function": "warn",
     "object-curly-newline": 0,
     "jsx-a11y/no-static-element-interactions": "off",
-    "jsx-a11y/click-events-have-key-events": "off"
+		"jsx-a11y/click-events-have-key-events": "off"
   }
 }

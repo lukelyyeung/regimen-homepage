@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Col, Icon } from 'antd';
 import classNames from 'classnames';
 import InViewMonitor from 'react-inview-monitor';
@@ -52,7 +53,7 @@ function Features({ className, ...props }) {
   return (
     <div className={classSets} {...props}>
       <h2 className="section__header">設計理念</h2>
-      <RowContainer gutter={0} style={customRowStyle}>
+      <RowContainer gutter={16} style={customRowStyle}>
         {featureList.map(({ icon, header, content }) => (
           <Col key={header} className="gutter-row" {...{ xs: 24, sm: 12, md: 12, lg: 6 }}>
             <InViewMonitor classNameNotInView="vis-hidden" classNameInView="animated fadeInUp">
@@ -67,5 +68,13 @@ function Features({ className, ...props }) {
     </div>
   );
 }
+
+Features.propTypes = {
+  className: PropTypes.string,
+};
+
+Features.defaultProps = {
+  className: '',
+};
 
 export default Features;

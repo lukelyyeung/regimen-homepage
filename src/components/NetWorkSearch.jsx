@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import { Form, Row, Col, Input, Button, TreeSelect, Select, message } from 'antd';
 import InViewMonitor from 'react-inview-monitor';
 import { Marker, InfoWindow } from 'google-maps-react';
@@ -6,8 +8,8 @@ import _flatten from 'lodash/flatten';
 import _get from 'lodash/get';
 
 import Map from './Map';
-import regions from '../constants/hongKongRegion';
-import specialties from '../constants/specialty';
+import REGIONS from '../constants/hongKongRegion';
+import SPECIALTIES from '../constants/specialty';
 
 import PARTNER_LIST from '../constants/partnerList';
 
@@ -15,6 +17,15 @@ const FormItem = Form.Item;
 
 const { SHOW_PARENT } = TreeSelect;
 class NetWorkSearch extends Component {
+  static propTypes = {
+    form: PropTypes.object.isRequired,
+    className: PropTypes.string,
+  };
+
+  static defaultProps = {
+    className: '',
+  };
+
   state = {
     partners: PARTNER_LIST,
     activeMarker: {},
@@ -33,18 +44,18 @@ class NetWorkSearch extends Component {
             {getFieldDecorator('regions', { rules: [{ required: false }] })(
               <TreeSelect
                 showSearch
-                treeData={regions}
+                treeData={REGIONS}
                 treeCheckable
                 showCheckedStrategy={SHOW_PARENT}
                 searchPlaceholder="選擇地區"
-              />,
+              />
             )}
           </FormItem>
         </Col>
         <Col {...{ xs: 24, sm: 24, md: 24, lg: 24 }} key="practitioner">
           <FormItem label="醫生姓名">
             {getFieldDecorator('name', { rules: [{ required: false }] })(
-              <Input placeholder="輸入醫生姓名" />,
+              <Input placeholder="輸入醫生姓名" />
             )}
           </FormItem>
         </Col>
@@ -52,12 +63,12 @@ class NetWorkSearch extends Component {
           <FormItem label="專科">
             {getFieldDecorator('specialty', { rules: [{ required: false }] })(
               <Select showSearch placeholder="選擇專科">
-                {specialties.map(({ label, value }) => (
+                {SPECIALTIES.map(({ label, value }) => (
                   <Select.Option mode="multiple" key={label} value={value}>
                     {label}
                   </Select.Option>
                 ))}
-              </Select>,
+              </Select>
             )}
           </FormItem>
         </Col>
@@ -69,48 +80,47 @@ class NetWorkSearch extends Component {
     regions: selectedRegions = [],
     name: selectedName = '',
     specialty: selectedSpecialty = 'any',
-  }) => PARTNER_LIST.filter(({ name, address: { region }, specialties }) => {
-    // Check name
-    const nameRegex = new RegExp(selectedName.toLowerCase(), 'g');
-    if (!nameRegex.test(name)) {
-      return false;
-    }
+  }) =>
+    PARTNER_LIST.filter(({ name, address: { region }, specialties }) => {
+      // Check name
+      const nameRegex = new RegExp(selectedName.toLowerCase(), 'g');
+      if (!nameRegex.test(name)) {
+        return false;
+      }
 
-    // check region
-    const flattenedRegions = _flatten(selectedRegions);
-    if (
-      flattenedRegions.length > 0
+      // check region
+      const flattenedRegions = _flatten(selectedRegions);
+      if (
+        flattenedRegions.length > 0
         && !flattenedRegions.find(selectedRegion => selectedRegion === region)
-    ) {
-      return false;
-    }
+      ) {
+        return false;
+      }
 
-    // check specialty
-    if (
-      selectedSpecialty !== 'any'
+      // check specialty
+      if (
+        selectedSpecialty !== 'any'
         && !specialties.find(specialty => specialty === selectedSpecialty)
-    ) {
-      return false;
-    }
+      ) {
+        return false;
+      }
 
-    return true;
-  });
+      return true;
+    });
 
-  handleSearch = (e) => {
+  handleSearch = e => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    this.props.form.validateFields(async (err, values) => {
       const filteredPartners = this.filterPartnerList(values);
-      message
-        .loading('正在搜尋中醫合作夥伴...', 1.25)
-        .then(() => {
-          if (filteredPartners.length > 0) {
-            message.success(`搜尋成功, 有${filteredPartners.length}位匹配的中醫合作夥伴`, 2.5);
-            return;
-          }
+      await message.loading('正在搜尋中醫合作夥伴...', 1.25);
 
-          message.warning('對不起，沒有匹配的中醫合作夥伴，請再嘗試', 2.5);
-        })
-        .then(() => this.setState({ ...this.state, partners: filteredPartners }));
+      if (filteredPartners.length > 0) {
+        message.success(`搜尋成功, 有${filteredPartners.length}位匹配的中醫合作夥伴`, 2.5);
+      } else {
+        message.warning('對不起，沒有匹配的中醫合作夥伴，請再嘗試', 2.5);
+      }
+
+      this.setState(prevState => ({ ...prevState, partners: filteredPartners }));
     });
   };
 
@@ -118,26 +128,28 @@ class NetWorkSearch extends Component {
     this.props.form.resetFields();
   };
 
-  onMarkerClick = (props, marker) => this.setState({
-    ...this.state,
-    activeMarker: marker,
-    selectedPlace: props,
-    showingInfoWindow: true,
-  });
+  onMarkerClick = (props, marker) =>
+    this.setState(prevState => ({
+      ...prevState,
+      activeMarker: marker,
+      selectedPlace: props,
+      showingInfoWindow: true,
+    }));
 
-  onInfoWindowClose = () => this.setState({
-    ...this.state,
-    activeMarker: null,
-    showingInfoWindow: false,
-  });
+  onInfoWindowClose = () =>
+    this.setState(prevState => ({
+      ...prevState,
+      activeMarker: null,
+      showingInfoWindow: false,
+    }));
 
   onMapClicked = () => {
     if (this.state.showingInfoWindow) {
-      this.setState({
-        ...this.state,
+      this.setState(prevState => ({
+        ...prevState,
         activeMarker: null,
         showingInfoWindow: false,
-      });
+      }));
     }
   };
 
@@ -146,7 +158,7 @@ class NetWorkSearch extends Component {
     return (
       <Col {...{ xs: 24, sm: 24, md: 24, lg: 12 }}>
         <Map mapTypeControl={false} fullscreenControl={false}>
-          {partners.map((partner) => {
+          {partners.map(partner => {
             const {
               name,
               address: { lat, lng },
@@ -167,7 +179,6 @@ class NetWorkSearch extends Component {
             visible={showingInfoWindow}
           >
             <div style={{ maxWidth: '20rem', width: '20rem' }}>
-              {/* <GoogleStreetImage {...streetImageProps} /> */}
               <p className="section__label">名稱</p>
               <p className="section__paragraph">{_get(selectedPlace, 'info.name', 'N/A')}</p>
               <p className="section__label">地址</p>
@@ -209,10 +220,9 @@ class NetWorkSearch extends Component {
   }
 
   render() {
-    const { className, id } = this.props;
-    const classSets = `network ${className}`;
+    const { className, form, ...otherProps } = this.props;
     return (
-      <div className={classSets} id={id}>
+      <div {...otherProps} className={classnames('network', className)}>
         <h2 className="section__header">中醫網絡</h2>
         <Row gutter={16}>
           {this.renderForm()}

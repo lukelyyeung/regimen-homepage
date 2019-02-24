@@ -16,13 +16,13 @@ function HeroContent({ ...props }) {
           <div className="hero-content__main">
             <InViewMonitor
               classNameNotInView="vis-hidden"
-              classNameInView={'animated fadeInUp'}
+              classNameInView="animated fadeInUp"
             >
               <h1 className="hero-content__header">「 藥莊 」</h1>
             </InViewMonitor>
             <InViewMonitor
               classNameNotInView="vis-hidden"
-              classNameInView={'animated animate-delay-0.5 fadeInUp'}
+              classNameInView="animated animate-delay-0.5 fadeInUp"
             >
               <p className="hero-content__subcontent">
                 藥莊採用註冊中醫師為病人處方的中藥藥渣，製成最適合患者使用的個人護理用品，
@@ -33,7 +33,7 @@ function HeroContent({ ...props }) {
             </InViewMonitor>
             <InViewMonitor
               classNameNotInView="vis-hidden"
-              classNameInView={'animated animate-delay-1 fadeInUp'}
+              classNameInView="animated animate-delay-1 fadeInUp"
             >
               <Button className="hero-content__button" ghost>
                 <AnchorLink offset="100" href="#project-introduction">

@@ -1,50 +1,57 @@
 import React, { PureComponent, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Modal as AntModal, Button } from 'antd';
 
 class Modal extends PureComponent {
-	state = { visible: false };
+  static propTypes = {
+    handleOk: PropTypes.func.isRequired,
+    children: PropTypes.node.isRequired,
+    skipConfirm: PropTypes.bool,
+    outputRender: PropTypes.func.isRequired,
+  };
 
-	showModal = () => this.setState({ visible: true });
+  static defaultProps = {
+    skipConfirm: false,
+  };
 
-	handleCancel = () => this.setState({ visible: false });
+  state = { visible: false };
 
-	handleOk = () => {
-		if (this.props.handleOk) {
-			this.props.handleOk();
-		}
+  showModal = () => this.setState({ visible: true });
 
-		this.handleCancel();
-	}
+  handleCancel = () => this.setState({ visible: false });
 
-	renderModal() {
-		const { children, skipConfirm, ...props } = this.props;
+  handleOk = () => {
+    const { handleOk } = this.props;
 
-		if (skipConfirm) {
-			props.footer = [
-				<Button onClick={this.handleCancel}>{props.cancelText || '返回'}</Button>
-			]
-		}
-		return (
-			<AntModal
-				visible={this.state.visible}
-				onOk={this.handleOk}
-				onCancel={this.handleCancel}
-				{...props}
-			>
-				{children}
-			</AntModal>
-		);
-	}
+    if (handleOk) {
+      handleOk();
+    }
 
-	render() {
-		const { outputRender } = this.props;
-		return (
-			<Fragment>
-				{outputRender({ onClick: this.showModal })}
-				{this.renderModal()}
-			</Fragment>
-		);
-	}
+    this.handleCancel();
+  };
+
+  renderModal() {
+    const { children, skipConfirm, ...props } = this.props;
+
+    if (skipConfirm) {
+      props.footer = [<Button onClick={this.handleCancel}>{props.cancelText || '返回'}</Button>];
+    }
+    return (
+      <AntModal {...this.state} {...props} onOk={this.handleOk} onCancel={this.handleCancel}>
+        {children}
+      </AntModal>
+    );
+  }
+
+  render() {
+    const { outputRender } = this.props;
+    return (
+      <Fragment>
+        {outputRender({ onClick: this.showModal })}
+        {this.renderModal()}
+      </Fragment>
+    );
+  }
 }
 
 export default Modal;

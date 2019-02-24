@@ -24,7 +24,7 @@ const socialIcons = [
   },
 ];
 
-function GlobalFooter(props) {
+function GlobalFooter() {
   return (
     <div className="flex-center flex-center--column">
       <h5 className="footer__header">留意我們其他動態</h5>

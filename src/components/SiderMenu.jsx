@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import DrawerMenu from 'rc-drawer';
 import { Layout, Menu } from 'antd';
 import NavigationLink from './NavigationLink';
@@ -6,6 +7,19 @@ import NavigationLink from './NavigationLink';
 const { Sider } = Layout;
 
 export default class SiderMenu extends PureComponent {
+  static propTypes = {
+    closeSider: PropTypes.func.isRequired,
+    toggleSider: PropTypes.func.isRequired,
+    menuItems: PropTypes.array.isRequired,
+    collapsed: PropTypes.bool,
+    logo: PropTypes.string,
+  };
+
+  static defaultProps = {
+    collapsed: false,
+    logo: '',
+  };
+
   renderMenuItems() {
     const { closeSider, menuItems } = this.props;
     return menuItems.map(navigationProps => (

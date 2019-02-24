@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
 import classNames from 'classnames';
 import InViewMonitor from 'react-inview-monitor';
@@ -11,7 +12,7 @@ function ProjectIntro({ className, ...props }) {
         <Col className="gutter-row" {...{ xs: 24, sm: 24, md: 12, lg: 12 }}>
           <InViewMonitor
             classNameNotInView="vis-hidden"
-            classNameInView={`animated fadeInRight`}
+            classNameInView="animated fadeInRight"
           >
             <h2 className="section__header">何謂中藥藥渣梘？</h2>
             <p className="section__paragraph">
@@ -24,5 +25,13 @@ function ProjectIntro({ className, ...props }) {
     </div>
   );
 }
+
+ProjectIntro.propTypes = {
+  className: PropTypes.string,
+};
+
+ProjectIntro.defaultProps = {
+  className: '',
+};
 
 export default ProjectIntro;
