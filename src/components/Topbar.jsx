@@ -28,7 +28,7 @@ class Topbar extends PureComponent {
     }
 
     return (
-      <Menu.Item className="topbar__logo topbar__item" key="logo">
+      <Menu.Item className="topbar__logo topbar__item topbar__item--always" key="logo">
         <Link to="/">
           <img src={logo} alt="Brand Logo" />
         </Link>
@@ -41,7 +41,7 @@ class Topbar extends PureComponent {
 
     if (isMobile) {
       return (
-        <Menu.Item className="topbar__item topbar__toggle-button" key="toggle">
+        <Menu.Item className="topbar__item topbar__item--mobile topbar__toggle-button" key="toggle">
           <Icon onClick={onMenuIconClick} type={isSiderToggled ? 'menu-unfold' : 'menu-fold'} />
         </Menu.Item>
       );

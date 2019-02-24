@@ -1,12 +1,14 @@
+const theme = require('./src/theme');
+
 module.exports = {
   siteMetadata: {
-    title: 'JoekChong homepage',
+    title: 'Regimen homepage',
   },
   plugins: [
     {
       resolve: 'gatsby-plugin-less',
       options: {
-				modifyVars: require('./src/theme'),
+        modifyVars: theme,
         javascriptEnabled: true,
       },
     },
@@ -32,5 +34,18 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Regimen',
+        short_name: 'Regimen',
+        start_url: '/',
+        background_color: '#f7f0eb',
+        theme_color: '#a2466c',
+        display: 'standalone',
+        icon: 'static/images/logo.png',
+        include_favicon: true,
+      },
+    },
   ],
 };

@@ -1,21 +1,37 @@
+
 .topbar {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: stretch;
-  background-color: transparent !important;
-  border: none !important;
+  background-color: transparent;
+  border: none;
 
   &__item {
-    font-weight: 700 !important;
-    display: flex !important;
+    font-weight: 700;
     align-items: center !important;
     border-bottom: none !important;
+    line-height: 4rem;
+    display: none !important;
+
+    @media screen and (min-width: @screen-sm) {
+      display: inline-block !important;
+    }
+
+    &--mobile {
+      @media screen and (max-width: @screen-sm) {
+        display: inline-block !important;
+      }
+    }
+
+    &--always {
+      display: inline-block !important;
+    }
 
     a,
     .anticon {
       color: @white !important;
-      transition: all 200ms ease-in !important;
+      transition: all 200ms ease-in;
     }
 
     &.ant-menu-item {
@@ -25,25 +41,26 @@
         a,
         .anticon {
           color: @black !important;
-          transform: scale(1.1) translateY(2.5px) !important;
+          transform: scale(1.1) translateY(2.5px);
         }
       }
     }
   }
 
   &__toggle-button {
-		margin-left: auto;
+    margin-left: auto;
     .anticon {
-      font-size: 1.5rem !important;
-			color: #fff !important;
+      font-size: 1.5rem;
+      color: #fff;
     }
   }
 
   &__logo {
-    margin-right: auto !important;
-    transition: transform 100ms ease-in !important;
+    margin-right: auto;
+    transition: transform 100ms ease-in;
 
     img {
+      padding: 0.5rem;
       width: 3rem;
       height: 3rem;
     }
@@ -55,7 +72,7 @@
 
     &.ant-menu-item.ant-menu-item-selected,
     &.ant-menu-item.ant-menu-item-active {
-      border-bottom: none !important;
+      border-bottom: none;
     }
   }
 }

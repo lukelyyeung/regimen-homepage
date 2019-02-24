@@ -27,11 +27,11 @@ export default class GlobalLayout extends Component {
   state = { isMobile: false, isSiderToggled: false };
 
   componentDidMount() {
-    this.registerEnquireScreen();
+    this.enquireHandler = this.registerEnquireScreen();
   }
 
   componentWillUnmount() {
-    unenquireScreen();
+    unenquireScreen(this.enquireHandler);
   }
 
   toggleSider = () => {
@@ -64,9 +64,9 @@ export default class GlobalLayout extends Component {
     });
   };
 
-  registerEnquireScreen() {
-    enquireScreen(isMobile => this.setState({ isMobile }));
-  }
+  onScreenSizeChange = isMobile => this.setState(state => ({ ...state, isMobile }));
+
+  registerEnquireScreen = () => enquireScreen(this.onScreenSizeChange);
 
   render() {
     const {
@@ -113,7 +113,7 @@ export default class GlobalLayout extends Component {
             </Footer>
           </Layout>
         </Layout>
-        <FacebookMessenger pageId="1603230056485437" appId="2192516717732736" />
+        <FacebookMessenger pageId="1603230056485437" themeColor="#39BFBE" version="3.2" />
       </LayoutContext.Provider>
     );
   }

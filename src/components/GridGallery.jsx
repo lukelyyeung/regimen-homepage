@@ -8,7 +8,7 @@ import getImageLabelByFileName from '../utils/getImageLabelByFileName';
 
 function GridGallery({ images, isMobile, data, ...props }) {
   return (
-    <div className="section" {...props}>
+    <div {...props}>
       <h2 className="section__header">活動紀錄</h2>
       <div className="flex-center flex-center--stretch">
         <StaticQuery

@@ -6,11 +6,13 @@ import heroBackgroundUrl from '../../static/images/hero.jpg';
 import ProjectIntro from '../components/ProjectIntro';
 import Features from '../components/Features';
 
-function Home({ isMobile }) {
+function Home() {
   return (
     <section role="main">
       <Jumbotron background={heroBackgroundUrl}>
-        <HeroContent id="hero-content" className="flex-center" />
+        <section className="section flex-center">
+          <HeroContent id="hero-content" />
+        </section>
       </Jumbotron>
       <ProjectIntro id="project-introduction" />
       <Features id="features" />

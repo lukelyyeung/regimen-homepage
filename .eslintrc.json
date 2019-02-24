@@ -6,7 +6,8 @@
   },
   "rules": {
     "import/no-extraneous-dependencies": "off",
-    "react/forbid-prop-types": false,
+		"react/forbid-prop-types": false,
+		"arrow-parens": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-filename-extension": "off",
     "object-curly-newline": 0,

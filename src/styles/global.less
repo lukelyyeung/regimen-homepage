@@ -25,4 +25,9 @@ html, body, #___gatsby {
 	&.collapsed {
 		transform: translateX(220px);
 	}
+
+	// Sider being wrapped with ant-layout by antd but fail to minimize its width when collapsed
+	.ant-layout:first-child {
+		flex: 0;
+	}
 }

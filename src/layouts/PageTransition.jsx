@@ -6,12 +6,12 @@ const Transition = posed.div({
   enter: {
     opacity: 1,
     x: 0,
-    transition: { duration: 500, ease: 'easeIn' },
+    transition: { duration: 250, ease: 'easeIn' },
   },
   exit: {
     opacity: 0,
     x: 100,
-    transition: { duration: 500, ease: 'easeOut' },
+    transition: { duration: 250, ease: 'easeOut' },
   },
 });
 

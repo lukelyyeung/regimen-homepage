@@ -1,33 +1,37 @@
 .hero-content {
-	.globalPadding();
-	flex: auto;
+  flex: auto;
+  display: flex;
+  text-align: justify;
+	justify-content: center;
+	margin-top: -4rem;
 
-	&__header {
-		font-size: 3rem;
-		color: white;
-		font-weight: bold;
-	}
+  &__header {
+    font-size: 3rem;
+    color: @white;
+    font-weight: bold;
+  }
 
-	&__subcontent {
-		color: #eee;
-		width: 75%;
+  &__subcontent {
+    color: #eee;
+    width: 75%;
 
-		@media screen and (max-width: @screen-lg) {
-			width: 100%;
-		}
-	}
+    @media screen and (max-width: @screen-lg) {
+      width: 100%;
+    }
+  }
 
-	&__button {
-		border: 1px solid white;
-		color: white;
-		padding: 0.5rem 1.5rem;
-		height: auto;
+  &__button {
+    border: 1px solid @white;
+    color: @white;
+    padding: 0.5rem 1.5rem;
+    height: auto;
 
-		&:hover, &:focus {
-			background-color: white !important;
-			color: black;
-			font-weight: bold;
-			border: 1px solid white;
-		}
-	}
+    &:hover,
+    &:focus {
+      background-color: @white !important;
+      color: @black;
+      font-weight: bold;
+      border: 1px solid @white;
+    }
+  }
 }

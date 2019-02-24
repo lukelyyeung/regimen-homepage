@@ -10,9 +10,10 @@
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
+	background-position: bottom;
 
   @media screen and (max-width: @screen-xs) {
-    background-position: bottom;
+		background-attachment: unset;
     background-size: 575px 600px;
   }
 
@@ -31,7 +32,6 @@
   }
 
   &__inner {
-		.globalPadding();
     position: absolute;
     display: flex;
     width: 100%;
