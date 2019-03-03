@@ -4,6 +4,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import InViewMonitor from 'react-inview-monitor';
 
 import Row from './common/RowContainer';
+import Logo from './Logo';
 
 function HeroContent({ ...props }) {
   return (
@@ -18,14 +19,14 @@ function HeroContent({ ...props }) {
               classNameNotInView="vis-hidden"
               classNameInView="animated fadeInUp"
             >
-              <h1 className="hero-content__header">「 藥莊 」</h1>
+              <Logo className="hero-content__header" alt="Brand Logo" />
             </InViewMonitor>
             <InViewMonitor
               classNameNotInView="vis-hidden"
               classNameInView="animated animate-delay-0.5 fadeInUp"
             >
               <p className="hero-content__subcontent">
-                藥莊採用註冊中醫師為病人處方的中藥藥渣，製成最適合患者使用的個人護理用品，
+                regimen採用註冊中醫師為病人處方的中藥藥渣，製成最適合患者使用的個人護理用品，
                 配合內服外用，讓患者得到更全面、持續的治理。亦可以減少耗用新鮮的藥材，
                 和開採及運輸的碳排放。我們會使用食物殘渣機處理藥渣，經渠送到污水處理設施，
                 減少將有機廢物棄置到堆填區，利用現有設施轉廢為能。

@@ -11,7 +11,7 @@ import Topbar from '../components/Topbar';
 import SiderMenu from '../components/SiderMenu';
 import GlobalFooter from '../components/GlobalFooter';
 import menuItems from '../constants/menuItem';
-import logo from '../../static/media/logo-white.png';
+import logo from '../../static/media/logo.png';
 import '../styles/main.less';
 
 const { Content, Header, Footer } = Layout;

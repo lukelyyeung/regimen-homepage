@@ -200,7 +200,7 @@ class NetWorkSearch extends Component {
     return (
       <Col {...{ xs: 24, sm: 24, md: 24, lg: 12 }} className="network__form">
         <p className="section__paragraph">
-          我們正致力尋找合作夥伴，若你想享用我們的服務，可在此搜尋你家附近的「藥莊」合作夥伴。
+          我們正致力尋找合作夥伴，若你想享用我們的服務，可在此搜尋你家附近的「regimen」合作夥伴。
         </p>
         <Form onSubmit={this.handleSearch}>
           <Row gutter={24}>{this.getFields()}</Row>

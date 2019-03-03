@@ -16,7 +16,7 @@ function ProjectIntro({ className, ...props }) {
           >
             <h2 className="section__header">何謂中藥藥渣梘？</h2>
             <p className="section__paragraph">
-              藥莊透過收集煎煮中藥後殘留的藥渣，提取其中的精華，再加工成中藥梘。
+              regimen透過收集煎煮中藥後殘留的藥渣，提取其中的精華，再加工成中藥梘。
               我們希望用户以中藥梘配合飲服中藥，達至「內服外用」的功效，療效更見顯著。
             </p>
           </InViewMonitor>

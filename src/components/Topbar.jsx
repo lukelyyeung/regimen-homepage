@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { Menu, Icon } from 'antd';
 import NavigationLink from './NavigationLink';
+import Logo from './Logo';
 
 class Topbar extends PureComponent {
   static propTypes = {
@@ -30,7 +31,7 @@ class Topbar extends PureComponent {
     return (
       <Menu.Item className="topbar__logo topbar__item topbar__item--always" key="logo">
         <Link to="/">
-          <img src={logo} alt="Brand Logo" />
+          <Logo />
         </Link>
       </Menu.Item>
     );
