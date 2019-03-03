@@ -1,12 +1,29 @@
-# gatsby-starter-hello-world
-Starter with the bare essentials needed for a [Gatsby](https://www.gatsbyjs.org/) site.
+# regime home page
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
-```
-gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world
-```
+Home page of a chinese medicine cosmetic start-up. Planned feature includs
 
-Or [view the live demo here](https://gatsby-starter-hello-world-demo.netlify.com/).
+1. Google map display for partnership's retail shop
 
-## Running in development
-`gatsby develop`
+2. CMS powered by Netlify
+
+3. E-commerce feature powered by Stripe or Rest API E-commerce platform (In Progress)
+
+## Project setup
+
+Installment
+`yarn install`
+
+Development
+`yarn develop`
+
+Build
+`yarn build`
+
+Serve build
+`yarn serve`
+
+Deployment
+`git push origin master`
+
+Deployment to surge
+`yarn deploy:surge`
