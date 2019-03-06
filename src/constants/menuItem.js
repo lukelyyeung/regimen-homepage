@@ -25,7 +25,7 @@ const menuItems = [
   {
     label: '中醫網絡',
     icon: 'reconciliation',
-    path: '/Network',
+    path: '/network',
   },
   {
     label: '有關文章',

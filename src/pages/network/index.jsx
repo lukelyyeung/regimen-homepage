@@ -1,12 +1,11 @@
 import React from 'react';
 
 import NetWorkSearch from '../../components/NetWorkSearch';
-import GlobalLayout from '../../layouts/GlobalLayout';
 
-export default function Index(props) {
+export default function Network() {
   return (
-    <GlobalLayout {...props}>
+    <section className="section">
       <NetWorkSearch />
-    </GlobalLayout>
+    </section>
   );
 }
