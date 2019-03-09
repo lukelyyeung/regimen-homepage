@@ -1,12 +1,15 @@
 ---
 templateKey: blog-post
 title: This is an exmple post
-date: 2016-12-17T15:04:10.000Z
 isShown: true
 featureImage: /media/example.jpg
+featureImageCaption: Testing caption
+date: 2016-12-17T15:04:10.000Z
 description: This is an example description.
 tags:
-  - example
+  - blog
+  - testing
+  - 1st
 ---
 
 ![chemex](/media/example.jpg)
