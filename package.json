@@ -6,6 +6,7 @@
 		"develop": "gatsby develop --https",
 		"start": "npm run develop",
 		"build": "rm -rf public && gatsby build",
+		"build:netlify": "sed -i \"s/branch: master/branch: ${CMS_BRANCH}/g\" static/admin/config.yml",
 		"serve": "gatsby serve",
 		"prod": "gatsby build && gatsby serve",
 		"lint": "eslint src/ --ext .js --ext .jsx",

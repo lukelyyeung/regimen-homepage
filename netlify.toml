@@ -1,0 +1,9 @@
+[context.production.environment]
+  CMS_BRANCH = "master"
+  NODE_VERSION = "8.12.0"
+
+[context.dev.environment]
+  CMS_BRANCH = "dev"
+
+[build]
+  command = "gatsby build:netlify"
