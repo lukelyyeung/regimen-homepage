@@ -6,4 +6,4 @@
   CMS_BRANCH = "dev"
 
 [build]
-  command = "gatsby build:netlify"
+  command = "yarn build:netlify"
